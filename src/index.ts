@@ -64,7 +64,7 @@ function makeModuleName(version: string) {
 function run(command, args, options?) {
     return new Promise((resolve, reject) => {
         const ls = spawn(command, args, options);
-        ls.stderr.pipe(process.stderr);
+        // ls.stderr.pipe(process.stderr);
         // ls.stdout.pipe(process.stdout);
         ls.on('close', (code) => {
             if (code === 0) {

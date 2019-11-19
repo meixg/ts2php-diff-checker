@@ -37,8 +37,6 @@
     "git-diff": "^2.0.6",
     "glob": "^7.1.6",
     "progress": "^2.0.3",
-    "ts2php~v0.12.12": "npm:ts2php@^0.12.12",
-    "ts2php~v0.16.0": "npm:ts2php@^0.16.0",
     "ts2php~v0.16.1": "npm:ts2php@^0.16.1",
     "typescript": "^3.4.5"
   }

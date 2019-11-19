@@ -1,0 +1,45 @@
+{
+  "name": "ts2php-diff-checker",
+  "version": "1.0.0",
+  "description": "Check compiled content between different ts2php versions. Make upgrade easy again!",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meixg/ts2php-diff-checker.git"
+  },
+  "keywords": [
+    "ts2php"
+  ],
+  "author": "meixuguang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meixg/ts2php-diff-checker/issues"
+  },
+  "bin": {
+    "ts2php-check": "./bin/ts2php-check.js",
+    "ts2php-check-aladdin": "./bin/ts2php-check-aladdin.js"
+  },
+  "homepage": "https://github.com/meixg/ts2php-diff-checker#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@types/node": "^12.12.9",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0"
+  },
+  "dependencies": {
+    "@babel/preset-typescript": "^7.7.2",
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "git-diff": "^2.0.6",
+    "glob": "^7.1.6",
+    "progress": "^2.0.3",
+    "ts2php~v0.12.12": "npm:ts2php@^0.12.12",
+    "ts2php~v0.16.0": "npm:ts2php@^0.16.0",
+    "ts2php~v0.16.1": "npm:ts2php@^0.16.1",
+    "typescript": "^3.4.5"
+  }
+}

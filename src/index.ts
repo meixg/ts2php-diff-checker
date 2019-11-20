@@ -50,7 +50,7 @@ async function getTs2phpByVersion(version: string) {
     }
     catch(e) {
         console.log(info(`Install ts2php version ${version}...`));
-        await run('npm', ['i', `${moduleName}@npm:ts2php@${version}`], {cwd: __dirname});
+        await run('npm', ['i', `${moduleName}@npm:ts2php@${version}`, '--no-save'], {cwd: __dirname});
         console.log(info(`Ts2php version ${version} installed.`))
     }
 

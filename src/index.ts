@@ -20,7 +20,10 @@ export async function checkFiles(patten: string, oldVersion: string, newVersion:
     const files = glob.sync(patten);
     let res = '';
     const total = files.length;
-    const bar = new ProgressBar(':bar :current/:total', { total });
+    let bar: ProgressBar;
+    if (total > 1) {
+        bar = new ProgressBar(':bar :current/:total', { total });
+    }
     for(let i = 0; i < files.length; i++) {
         const file = files[i];
         const compileResult = await checkOneFile(file, oldVersion, newVersion, options);
@@ -28,7 +31,7 @@ export async function checkFiles(patten: string, oldVersion: string, newVersion:
             res += `diff ${file}\n`;
             res += compileResult
         }
-        bar.tick();
+        bar && bar.tick();
     };
     return res;
 }
@@ -50,7 +53,7 @@ async function getTs2phpByVersion(version: string) {
     }
     catch(e) {
         console.log(info(`Install ts2php version ${version}...`));
-        await run('npm', ['i', `${moduleName}@npm:ts2php@${version}`, '--no-save'], {cwd: __dirname});
+        await run('npm', ['i', `${moduleName}@npm:ts2php@${version}`, '--registry=https://registry.npm.taobao.org'], {cwd: __dirname});
         console.log(info(`Ts2php version ${version} installed.`))
     }
 

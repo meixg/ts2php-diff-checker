@@ -19,8 +19,7 @@
     "url": "https://github.com/meixg/ts2php-diff-checker/issues"
   },
   "bin": {
-    "ts2php-check": "./bin/ts2php-check.js",
-    "ts2php-check-aladdin": "./bin/ts2php-check-aladdin.js"
+    "ts2php-check": "./bin/ts2php-check.js"
   },
   "homepage": "https://github.com/meixg/ts2php-diff-checker#readme",
   "devDependencies": {

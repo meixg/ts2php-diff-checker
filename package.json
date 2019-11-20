@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "gulp",
+    "dev": "gulp watch",
     "semantic-release": "semantic-release"
   },
   "repository": {
@@ -33,11 +34,13 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.7.2",
+    "@types/semver": "^6.2.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
     "git-diff": "^2.0.6",
     "glob": "^7.1.6",
     "progress": "^2.0.3",
+    "semver": "^6.3.0",
     "ts2php~v0.16.1": "npm:ts2php@^0.16.1",
     "typescript": "~3.4.5"
   }

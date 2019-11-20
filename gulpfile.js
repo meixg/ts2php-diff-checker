@@ -6,3 +6,7 @@ gulp.task('default', () =>
 		.pipe(babel())
 		.pipe(gulp.dest('dist'))
 );
+
+gulp.task('watch', () => 
+	gulp.watch('src/**/*.ts', gulp.series('default'))
+)

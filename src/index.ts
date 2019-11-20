@@ -4,6 +4,7 @@ import * as ts2php from 'ts2php~v0.16.1';
 import gitDiff from "git-diff";
 import glob from "glob";
 import ProgressBar from 'progress';
+import semver from 'semver';
 
 const info = chalk.bold.green;
 const error = chalk.bold.red;
@@ -47,17 +48,27 @@ async function compileByVersion(filePath: string, version: string, options?: ts2
 }
 
 async function getTs2phpByVersion(version: string) {
-    const moduleName = makeModuleName(version);
-    try {
-        require.resolve(moduleName);
+    if (semver.valid(version)) {
+        const moduleName = makeModuleName(version);
+        try {
+            require.resolve(moduleName);
+        }
+        catch(e) {
+            console.log(info(`Install ts2php version ${version}...`));
+            await run('npm', ['i', `${moduleName}@npm:ts2php@${version}`, '--registry=https://registry.npm.taobao.org'], {cwd: __dirname});
+            console.log(info(`Ts2php version ${version} installed.`))
+        }
+    
+        return require(moduleName) as typeof ts2php;
     }
-    catch(e) {
-        console.log(info(`Install ts2php version ${version}...`));
-        await run('npm', ['i', `${moduleName}@npm:ts2php@${version}`, '--registry=https://registry.npm.taobao.org'], {cwd: __dirname});
-        console.log(info(`Ts2php version ${version} installed.`))
+    else {
+        try {
+            return require(version);
+        }
+        catch (e) {
+            throw new Error(`invalid version: ${version}`);
+        }
     }
-
-    return require(moduleName) as typeof ts2php;
 }
 
 function makeModuleName(version: string) {

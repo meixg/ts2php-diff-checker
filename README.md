@@ -41,3 +41,11 @@ module.exports = {
     }
 };
 ```
+
+## use .js file directly
+
+While you working on ts2php, you may want to specify a file to use.
+
+```sh
+ts2php-check 0.12.12 /path/to/ts2php/dist/index.js
+```

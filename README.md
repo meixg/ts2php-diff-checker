@@ -10,7 +10,9 @@ npm i -g ts2php-diff-checker
 
 ## usage
 
-Use different versions of ts2php to compile files that match pattern, and check diff between them. Output diff results to a file if destination specified.
+Use different versions of ts2php to compile files that match pattern, and check diff between them.
+
+Output diff results to a file if destination specified.
 
 ```sh
 ts2php-check <pattern> <old-version> <new-version> [destination]

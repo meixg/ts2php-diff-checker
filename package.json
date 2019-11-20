@@ -1,14 +1,15 @@
 {
   "name": "ts2php-diff-checker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Check compiled content between different ts2php versions. Make upgrade easy again!",
   "main": "dist/index.js",
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meixg/ts2php-diff-checker.git"
+    "url": "https://github.com/meixg/ts2php-diff-checker.git"
   },
   "keywords": [
     "ts2php"
@@ -27,7 +28,8 @@
     "@babel/preset-env": "^7.7.1",
     "@types/node": "^12.12.9",
     "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0"
+    "gulp-babel": "^8.0.0",
+    "semantic-release": "^15.13.31"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.7.2",

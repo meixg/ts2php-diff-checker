@@ -4,7 +4,7 @@
   "description": "Check compiled content between different ts2php versions. Make upgrade easy again!",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",

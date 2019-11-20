@@ -49,7 +49,7 @@ program
     });
 
 program
-    .command('check <pattern> <old-version> <new-version> [destination]')
+    .arguments('<pattern> <old-version> <new-version> [destination]')
     .description('Use different versions of ts2php to compile files that match pattern, and check diff between them. Output diff results to a file if destination specified.')
     .option('-c, --config <config path>', 'ts2php config file to use while compile, must be a js file with module.exports = {// config}')
     .action(async (pattern, oldVersion, newVersion, destination, args) => {
@@ -104,8 +104,8 @@ async function check(oldVersion, newVersion, pattern, options, destination) {
 }
 
 
-const commands = ['aladdin', 'check'];
-if (commands.indexOf(process.argv[2]) === -1) {
-    console.log(write.error('Invalid command! Use -h to see help.'));
-}
+// const commands = ['aladdin', 'check'];
+// if (commands.indexOf(process.argv[2]) === -1) {
+//     console.log(write.error('Invalid command! Use -h to see help.'));
+// }
 

@@ -1,7 +1,7 @@
 import { spawn } from "child_process";
 import chalk from "chalk";
 import * as ts2php from 'ts2php~v0.16.1';
-import gitDiff from "git-diff";
+import * as jsDiff from "diff";
 import glob from "glob";
 import ProgressBar from 'progress';
 import semver from 'semver';
@@ -13,8 +13,25 @@ export async function checkOneFile(filePath:string, oldVersion: string, newVersi
     const oldRes = await compileByVersion(filePath, oldVersion, options);
     const newRes = await compileByVersion(filePath, newVersion, options);
 
-    const diff = gitDiff(oldRes, newRes);
-    return diff;
+    let diff = jsDiff.structuredPatch(filePath, filePath, oldRes, newRes);
+    let ret = [];
+
+    if (diff.hunks.length === 0) {
+        return '';
+    }
+
+    ret.push(`--- ${filePath}`);
+    ret.push(`+++ ${filePath}`);
+    for (let i = 0; i < diff.hunks.length; i++) {
+        const hunk = diff.hunks[i];
+        ret.push(
+          '@@ -' + hunk.oldStart + ',' + hunk.oldLines
+          + ' +' + hunk.newStart + ',' + hunk.newLines
+          + ' @@'
+        );
+        ret.push.apply(ret, hunk.lines);
+    }
+    return ret.join('\n') + '\n';
 }
 
 export async function checkFiles(patten: string, oldVersion: string, newVersion: string, options?: ts2php.Ts2phpOptions) {
@@ -29,7 +46,6 @@ export async function checkFiles(patten: string, oldVersion: string, newVersion:
         const file = files[i];
         const compileResult = await checkOneFile(file, oldVersion, newVersion, options);
         if (compileResult) {
-            res += `diff ${file}\n`;
             res += compileResult
         }
         bar && bar.tick();

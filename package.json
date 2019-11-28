@@ -27,17 +27,18 @@
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
+    "@babel/preset-typescript": "^7.7.2",
+    "@types/diff": "^4.0.2",
     "@types/node": "^12.12.9",
+    "@types/semver": "^6.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "semantic-release": "^15.13.31"
   },
   "dependencies": {
-    "@babel/preset-typescript": "^7.7.2",
-    "@types/semver": "^6.2.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
-    "git-diff": "^2.0.6",
+    "diff": "^4.0.1",
     "glob": "^7.1.6",
     "progress": "^2.0.3",
     "semver": "^6.3.0",
